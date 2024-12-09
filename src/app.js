@@ -120,6 +120,17 @@ db.collection('users').find().limit(4).forEach(
         })
     }
 )
+
+db.collection('users').find().limit(4).forEach(
+  (doc)=>{
+      db.collection('users').updateMany({
+          _id : doc._id
+      },{
+         $inc : {age :4}
+         
+      })
+  }
+)
 // ///updateone $inc age 5
 db.collection('users').updateOne({
   name : "omar"
